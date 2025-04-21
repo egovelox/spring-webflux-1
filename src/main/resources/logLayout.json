@@ -1,0 +1,23 @@
+{
+  "level": "${json:level}",
+  "@timestamp": "${json:timestamp}",
+  "correlation_id": "${json:mdc:correlationId}",
+  "thread_name": "${json:thread:name}",
+  "message": "${json:message}",
+  "logger_name": "${json:logger:name}",
+  "file": "${json:source:fileName}",
+  "line_number": "${json:source:lineNumber}",
+  "class": "${json:source:className}",
+  "method": "${json:source:methodName}",
+  "@version": 1,
+  "module": "hreactor1",
+  "module_version": "@project.version@",
+  "component": "hreactor1-api",
+  "component_type": "ecs",
+  "source_host": "${hostName}",
+  "exception": {
+    "exception_class": "${json:exception:className}",
+    "exception_message": "${json:exception:message}",
+    "stacktrace": "${json:exception:stackTrace:text}"
+  }
+}

@@ -1,0 +1,4 @@
+server:
+  port: 8888
+v1:
+  baseUrl: /hreactor1/v1

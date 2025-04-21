@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+
+set -e
+
+cd "$(dirname $0)"
+CMD="$1"
+
+case "$CMD" in
+  "start-docker")
+    docker-compose -f ./docker-compose.yml up -d
+    ;;
+  "stop-docker")
+    docker-compose -f ./docker-compose.yml down
+    ;;
+  "start-api")
+    cd ..
+    spring_profiles_active=dev mvn clean spring-boot:run -Dspring-boot.run.jvmArguments='-Xmx800m'
+    ;;
+  "run-all")
+    ./run start-docker
+    ./run start-api
+    ./run stop-docker
+    ;;
+  *)
+    >&2 echo "usage $0 start-docker | stop-docker | start-api | run-all"
+    ;;
+esac
+
